@@ -1,6 +1,6 @@
 import { formatUserInfo } from '@/utils';
 import type { ContextMenu } from '@/structures';
-import { ApplicationCommandType } from 'discord-api-types/v10';
+import { ApplicationCommandType, MessageFlags } from 'discord-api-types/v10';
 export default {
 	data: {
 		name: 'Author Info',
@@ -13,10 +13,10 @@ export default {
 		const targetUser = await app.api.getUser(message.author.id);
 		// prettier-ignore
 		const member = interaction.guild_id && (await app.api.getGuildMember(interaction.guild_id, message.author.id).catch(() => {}))
-		const embed = formatUserInfo((member && member) || undefined, targetUser, interaction, app);
+		const container = formatUserInfo((member && member) || undefined, targetUser, interaction, app);
 		await app.api.editInteractionReply(interaction.application_id, interaction.token, {
-			embeds: [embed.toJSON() as any],
-			flags: app.ephemeral,
+			components: [container],
+			flags: app.ephemeral | MessageFlags.IsComponentsV2,
 		});
 	},
 } satisfies ContextMenu<'Message'>;
