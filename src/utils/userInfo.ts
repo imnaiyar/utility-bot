@@ -27,9 +27,12 @@ const text = `# ${title}\n` + `**Account Type**: ${targetUser?.bot ? "Bot" : "Us
   
   if (banner) container.addMediaGalleryComponents(mg => mg.addItems(item => item.setURL(banner)))
   
-  if (member && member.roles.length) {
-    container.addSeparatorComponents(sp => sp.setDivider(true))
-    .addTextDisplayComponents(td => td.setContent(`# Roles\n ${member.roles.map((role) => roleMention(role)).join(", ")}`))
+  if (member) {
+   if (member.roles.length) {
+     container.addSeparatorComponents(sp => sp.setDivider(true))
+    .addTextDisplayComponents(td => td.setContent(`# Roles\n ${member.roles.map((role) => roleMention(role)).join(", ")}`));
+   }
+    
     container.addActionRowComponents(ar => ar.addComponents(new ButtonBuilder().setLabel("Permissions").setStyle(ButtonStyle.Secondary).setCustomId(`member_perms:${member.permissions}`)))
   }
 
