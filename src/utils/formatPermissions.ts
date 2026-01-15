@@ -5,9 +5,9 @@ export function formatPermissions(bits: string = "0") {
   
   for (const [perm, bit] of Object.entries(PermissionFlagsBits)) {
     let check = ""
-    if ((int && bit) === bit) check = "✔️"
+    if ((int & bit) === bit) check = "✔️"
     else check = "❌";
-    formatted.push(check + `${perm} (\`${bit.toString(2).length - 1}\`)`)
+    formatted.push(check + `${perm} (\` 1 << ${bit.toString(2).length - 1}\`)`)
   }
   return formatted.join("\n")
 }
