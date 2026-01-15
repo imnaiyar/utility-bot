@@ -14,7 +14,7 @@ export default {
 		// prettier-ignore
 		const container = formatUserInfo( member ?? undefined as any , targetUser, interaction, app);
 		await app.api.editInteractionReply(interaction.application_id, interaction.token, {
-			embeds: [container],
+			components: [container],
 			flags: app.ephemeral | MessageFlags.IsComponentsV2
 		});
 	},
