@@ -1,6 +1,6 @@
 import { formatUserInfo } from '@/utils';
 import type { SlashCommand } from '@/structures';
-import { ApplicationCommandOptionType } from 'discord-api-types/v10';
+import { ApplicationCommandOptionType, MessageFlags } from 'discord-api-types/v10';
 export default {
 	data: {
 		name: 'userinfo',
@@ -20,10 +20,10 @@ export default {
 		const member = options.getMember('user');
 		const targetUser = options.getUser('user')!;
 		// prettier-ignore
-		const embed = formatUserInfo( member ?? undefined as any, targetUser, interaction, app);
+		const container = formatUserInfo( member ?? undefined as any, targetUser, interaction, app);
 		await app.api.editInteractionReply(interaction.application_id, interaction.token, {
-			embeds: [embed.toJSON() as any],
-			flags: app.ephemeral,
+			components: [container],
+			flags: app.ephemeral | MessageFlags.IsComponentsV2,
 		});
 	},
 } satisfies SlashCommand;
