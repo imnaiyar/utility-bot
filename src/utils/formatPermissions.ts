@@ -1,4 +1,4 @@
-import { PermissionFlagsBits } from "discord-api-types";
+import { PermissionFlagsBits } from "discord-api-types/v10";
 export function formatPermissions(bits: string = "0") {
   const int = BigInt(bits);
   const formatted = [];

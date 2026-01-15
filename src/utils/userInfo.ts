@@ -22,7 +22,7 @@ const text = `# ${title}\n` + `**Account Type**: ${targetUser?.bot ? "Bot" : "Us
   const container = new ContainerBuilder()
   
   
-  if (avatarUrl) container.addSectionComponents(sc => sc.addThumbnailAccessory(th => th.setURL(avatarUrl).addTextDisplayComponents(td => td.setContent(text))))
+  if (avatarUrl) container.addSectionComponents(sc => sc.setThumbnailAccessory(th => th.setURL(avatarUrl)).addTextDisplayComponents(td => td.setContent(text)))
   else container.addTextDisplayComponents(td => td.setContent(text))
   
   if (banner) container.addMediaGalleryComponents(mg => mg.addItems(item => item.setURL(banner)))

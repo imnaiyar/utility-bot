@@ -153,7 +153,7 @@ export class Bot {
 		}
 		
 		if (interaction.data.custom_id.startsWith("member_perms:")) {
-		  const perms = formatPermission(interaction.data.custom_id.split(":")[1])
+		  const perms = formatPermissions(interaction.data.custom_id.split(":")[1])
 		  return new Response(
 				JSON.stringify({
 					type: InteractionResponseType.ChannelMessageWithSource,
