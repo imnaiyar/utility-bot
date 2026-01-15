@@ -22,6 +22,7 @@ import { loadSlash, loadContext, validate } from '@/handlers';
 import { handleReminders } from '@/handlers';
 import config from '@/config';
 import { DiscordAPI, type RawFile } from '@/services/discord';
+import { formatPermissions } from "@/utils/formatPermissions"
 
 type RepliableInteractions = Exclude<APIInteraction, APIApplicationCommandAutocompleteInteraction>;
 
@@ -144,6 +145,20 @@ export class Bot {
 					type: InteractionResponseType.ChannelMessageWithSource,
 					data: {
 						content: 'This is not your interaction. Nice try tho Haha!!',
+						flags: 64,
+					},
+				}),
+				{ headers: { 'Content-Type': 'application/json' } },
+			);
+		}
+		
+		if (interaction.data.custom_id.startsWith("member_perms:")) {
+		  const perms = formatPermission(interaction.data.custom_id.split(":")[1])
+		  return new Response(
+				JSON.stringify({
+					type: InteractionResponseType.ChannelMessageWithSource,
+					data: {
+						content: perms,
 						flags: 64,
 					},
 				}),
