@@ -31,7 +31,7 @@ const buildTimestampChoices = (date: Date) => {
 export default {
 	data: {
 		name: 'time',
-		description: 'convert a natural language time to a Discord timestamp',
+		description: 'Convert a natural language time to a Discord timestamp',
 		options: [
 			{
 				name: 'input',
