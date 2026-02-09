@@ -19,6 +19,7 @@ import githubIssues from '@/commands/slash/github-issues';
 import githubPr from '@/commands/slash/github-pr';
 import githubWorkflows from '@/commands/slash/github-workflows';
 import githubFiles from '@/commands/slash/github-files';
+import time from '@/commands/slash/time';
 
 // Static imports for context menus
 import translate from '@/commands/contexts/translate';
@@ -52,6 +53,7 @@ export function loadSlash(_dirs: string) {
 		githubPr as SlashCommand<true>,
 		githubWorkflows as SlashCommand<true>,
 		githubFiles as SlashCommand<true>,
+		time as SlashCommand<true>,
 	];
 
 	for (const command of autocompleteCommands) {
