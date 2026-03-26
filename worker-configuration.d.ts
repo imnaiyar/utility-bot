@@ -6,7 +6,6 @@ declare namespace Cloudflare {
 		mainModule: typeof import("./src/index");
 	}
 	interface Env {
-		REMINDERS: KVNamespace;
 		bookmarks: KVNamespace;
 		DISCORD_PUBLIC_KEY: string;
 		DISCORD_CLIENT_ID: string;

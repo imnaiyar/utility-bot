@@ -43,9 +43,6 @@
 	"packageManager": "pnpm@10.15.1",
 	"cloudflare": {
 		"bindings": {
-			"REMINDERS": {
-				"description": "This will hold all the reminders"
-			},
 			"bookmarks": {
 				"description": "This will hold all the bookmarks"
 			}

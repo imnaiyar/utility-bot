@@ -82,31 +82,13 @@ export default {
 			)
 			.setColor(0x3cff2e);
 
-		await app.env.REMINDERS.put(interaction.id, '', {
-			metadata: {
-				authorId: interaction.user?.id ?? interaction.member!.user.id,
-				text,
-				time: dur,
-				username: user!.username,
-				setAt: Date.now(),
-				dmId: interaction.channel.id,
-				sent: false,
-			},
-			expiration: Math.trunc(dur / 1000) + 3600, // 1 hour after the reminder
-		});
+		await app.env.db
+			.prepare(`INSERT INTO reminders (id, author_id, text, remind_at, username, set_at, dm_id, sent) VALUES (?, ?, ?, ?, ?, ?, ?, 0)`)
+			.bind(interaction.id, interaction.user?.id ?? interaction.member!.user.id, text, dur, user!.username, Date.now(), interaction.channel.id)
+			.run();
 		await app.api.editInteractionReply(interaction.application_id, interaction.token, {
 			embeds: [embed.toJSON() as any],
 			flags: app.ephemeral,
 		});
 	},
 } satisfies SlashCommand;
-
-export interface Reminder {
-	authorId: string;
-	text: string;
-	time: number;
-	username: string;
-	setAt: number;
-	dmId: string;
-	sent: boolean;
-}
