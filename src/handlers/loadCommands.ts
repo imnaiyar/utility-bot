@@ -14,6 +14,7 @@ import register from '@/commands/slash/register';
 // commands with autocomplete
 /* import todo from "@/commands/slash/todo"; */
 import bookmarks from '@/commands/slash/bookmarks';
+import time from "@/commands/slash/time";
 import convert from '@/commands/slash/convert';
 import githubIssues from '@/commands/slash/github-issues';
 import githubPr from '@/commands/slash/github-pr';
@@ -52,6 +53,7 @@ export function loadSlash(_dirs: string) {
 		githubPr as SlashCommand<true>,
 		githubWorkflows as SlashCommand<true>,
 		githubFiles as SlashCommand<true>,
+		time as SlashCommand<true>
 	];
 
 	for (const command of autocompleteCommands) {
