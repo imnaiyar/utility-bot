@@ -69,7 +69,7 @@ export default {
 	    }
 	  }
 	  
-	  return options.length ? options.splice(0, 25) : [{ name: "Nothing matching, or error", value: "null"}]
+	  return { choices: options.length ? options.splice(0, 25) : [{ name: "Nothing matching, or error", value: "null"}] }
 	}
 } satisfies SlashCommand<true>;
 
