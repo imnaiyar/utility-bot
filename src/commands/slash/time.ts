@@ -9,8 +9,8 @@ const format_tokens = {
   "T": "HH:mm:ss", // "10:30:30"
   "d": "dd/MM/yyyy", // "04/06/2026"
   "D": "MMMM dd, yyyy", // "August 04, 2021"
-  "f": "MMMM dd, yyyy at HH:mm", // "August 04, 2021 at 10:30"
-  "F": "cccc, MMMM dd, yyyy at HH:mm", // "Wednesday, August 04, 2021 at 10:30",
+  "f": "MMMM dd, yyyy 'at' HH:mm", // "August 04, 2021 at 10:30"
+  "F": "cccc, MMMM dd, yyyy 'at' HH:mm", // "Wednesday, August 04, 2021 at 10:30",
   "s": "dd/MM/yyyy, HH:mm", // "04/10/2026, 10:30"
   "S": "dd/MM/yyyy HH:mm:ss" // "04/10/2026, 10:30:30"
  }
@@ -62,7 +62,7 @@ export default {
 	      const instance = DateTime.fromJSDate(parsed, { zone: tz ?? "Asia/Kolkata" })
 	      
 	      for (const [k, format] of Object.entries(format_tokens)) {
-	        options.push({ name: instance.toFormat(format), value: `${Math.round(instance.toSeconds())}/${format}` })
+	        options.push({ name: instance.toFormat(format), value: `${Math.round(instance.toSeconds())}/${k}` })
 	      }
 	      options.push({ name: instance.toRelative(DateTime.now().setZone(tz ?? "Asia/Kolkata")), value: `${Math.round(instance.toSeconds())}/R` })
 	      break
