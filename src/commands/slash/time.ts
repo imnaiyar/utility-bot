@@ -1,7 +1,7 @@
 import { ContextType, IntegrationType, type SlashCommand } from '@/structures';
 import { MessageFlags } from 'discord-api-types/v10';
 import { ApplicationCommandOptionType } from 'discord-api-types/v10';
-import chrono from "chrono-node";
+import * as chrono from "chrono-node";
 import { DateTime } from "luxon";
 
 const format_tokens = {
