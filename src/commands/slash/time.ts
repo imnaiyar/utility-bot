@@ -10,7 +10,7 @@ const format_tokens = {
   "d": "dd/MM/yyyy", // "04/06/2026"
   "D": "MMMM dd, yyyy", // "August 04, 2021"
   "f": "MMMM dd, yyyy at HH:mm", // "August 04, 2021 at 10:30"
-  "F": "cccc, MMMM dd, yyyy at HH:mm" // "Wednesday, August 04, 2021 at 10:30",
+  "F": "cccc, MMMM dd, yyyy at HH:mm", // "Wednesday, August 04, 2021 at 10:30",
   "s": "dd/MM/yyyy, HH:mm", // "04/10/2026, 10:30"
   "S": "dd/MM/yyyy HH:mm:ss" // "04/10/2026, 10:30:30"
  }
