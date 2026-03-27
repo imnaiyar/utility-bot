@@ -15,7 +15,7 @@
 	},
 	"routes": [
 		{
-			"pattern": "interactions.imnaiyar.site",
+			"pattern": "utility-bot.skyhelper.xyz",
 			"custom_domain": true
 		}
 	],
