@@ -44,7 +44,7 @@ export default {
 			content: `${formatted}` + `\n Inline: \`${formatted}\`` + `\nCode Block\n\`\`\`${formatted}\`\`\``,
 		});
 	},
-	async autocomplete(app, int, op) {
+	 autocomplete(app, int, op) {
 	  const { name, value } = op.getFocusedOption();
 	  
 	  const tz = op.get("timezone")?.value;
@@ -53,7 +53,7 @@ export default {
 	  
 	  switch (name) {
 	    case "timezone": 
-	      options.push(...Intl.getSupportedValuesOf("timeZone").filter(n => n.toLowerCase().includes(value.toLowerCase())).map(n => ({ name: n, value: n })));
+	      options.push(...Intl.supportedValuesOf("timeZone").filter(n => n.toLowerCase().includes(value.toLowerCase())).map(n => ({ name: n, value: n })));
 	      break;
 	    case "date-time": {
 	      const parsed = chrono.parseDate(value, { timezone: getOffset(tz) });
