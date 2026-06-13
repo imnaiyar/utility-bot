@@ -12,7 +12,7 @@ export default {
 	async run(app, interaction, options) {
 		const target = options.getTargetMessage();
 
-		const formatted = formatWithOptions({ depth: 5 }, '%O', target);
+		const formatted = formatWithOptions({ depth: null }, '%O', target);
 		let toRespond = `\`\`\`js\n${formatted}\`\`\``;
 		if (formatted.length >= 2000) {
 			toRespond = await postToHaste(formatted);
